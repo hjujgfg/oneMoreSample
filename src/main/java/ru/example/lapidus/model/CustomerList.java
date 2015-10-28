@@ -20,10 +20,15 @@ public class CustomerList implements MyNode {
      * @return
      */
     public Customer addChild() {
-        Customer c = new Customer();
+        Customer c = new Customer(this);
         customers.add(c);
         current = customers.size() - 1;
         return c;
+    }
+
+    @Override
+    public MyNode getParent() {
+        return null;
     }
 
 }

@@ -66,13 +66,35 @@ public class MyXMLParserImpl1 extends DefaultHandler implements MyXMLParser {
                 if (parent == null)
                     parent = top;
                 current = parent.addChild();
-
+                break;
+            case "position":
+            case "order":
+                parent = current;
+                current = current.addChild();
+                break;
         }
     }
 
     @Override
     public void characters(char[] ch, int start, int length) {
+        switch (currentElement) {
+            case "id":
+                
+        }
+    }
 
+    @Override
+    public void endElement(String namespaceURI, String localName, String qName) throws SAXException {
+        switch (qName) {
+            case "id":
+                break;
+            case "name":
+                break;
+            case "price":
+                break;
+            case "count":
+                break;
+        }
     }
 
     @Override

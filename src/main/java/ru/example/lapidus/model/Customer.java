@@ -20,7 +20,7 @@ public class Customer implements MyNode{
     }
 
     public Order addChild() {
-        Order o = new Order();
+        Order o = new Order(this);
         orders.add(o);
         currentOrder = orders.size() - 1;
         return o;

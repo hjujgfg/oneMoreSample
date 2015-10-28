@@ -27,7 +27,7 @@ public class Order implements MyNode{
 
     @Override
     public MyNode getParent() {
-        return null;
+        return parent;
     }
 
     public int getId() {
