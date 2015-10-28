@@ -10,12 +10,16 @@ $RECYCLE.BIN/
 
 out/
 resources — копия/
+target/
 
 # Windows Installer files
 *.cab
 *.msi
 *.msm
 *.msp
+
+*.jar
+*.original
 
 # Windows shortcuts
 *.lnk
