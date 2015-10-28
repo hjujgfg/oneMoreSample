@@ -9,8 +9,8 @@ Desktop.ini
 $RECYCLE.BIN/
 
 out/
-resources — копия/
 target/
+.idea/
 
 # Windows Installer files
 *.cab
