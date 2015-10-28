@@ -15,7 +15,7 @@ public class Order implements MyNode{
     private Customer parent;
     public Order(MyNode parent) throws ClassCastException{
         positions = new ArrayList<Position>();
-        this.parent = (Customer) parent; 
+        this.parent = (Customer) parent;
     }
 
     public  Position addChild() {
