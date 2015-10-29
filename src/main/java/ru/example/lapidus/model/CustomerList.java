@@ -11,6 +11,7 @@ import java.util.List;
 public class CustomerList implements MyNode {
     private List<Customer> customers;
     int current;
+    int id;
     public CustomerList() {
         customers = new ArrayList<Customer>();
     }
@@ -29,6 +30,16 @@ public class CustomerList implements MyNode {
     @Override
     public MyNode getParent() {
         return null;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public void setParameter(String name, Object value) {
+
     }
 
 }

@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.xml.sax.helpers.DefaultHandler;
 import ru.example.lapidus.interfaces.MyXMLParser;
+import ru.example.lapidus.model.CustomerList;
+import ru.example.lapidus.service.MyXMLParserImpl1;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 
 /**
@@ -48,6 +53,11 @@ public class UploadController {
                 //this.getClass().getResourceAsStream("scheme.xds");
                 //MyXMLParser parser = new MyXMLParserImpl1();
 
+                SAXParserFactory factory = SAXParserFactory.newInstance();
+                SAXParser saxParser = factory.newSAXParser();
+                //MyXMLParserImpl1 mp = new MyXMLParserImpl1();
+                saxParser.parse(xml, (DefaultHandler) parser);
+                CustomerList top = (CustomerList) parser.getTop();
                 return "You successfully uploaded " + name + "!" + parser.isValid(xml, xsd);
             } catch (Exception e) {
                 return "You failed to upload " + name + " => " + e.getMessage();

@@ -38,6 +38,13 @@ public class Customer implements MyNode{
         this.id = id;
     }
 
+    @Override
+    public void setParameter(String name, Object value) {
+        if (name == "name") {
+            this.name = (String)value;
+        }
+    }
+
     public String getName() {
         return name;
     }

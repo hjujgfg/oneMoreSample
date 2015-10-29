@@ -79,21 +79,33 @@ public class MyXMLParserImpl1 extends DefaultHandler implements MyXMLParser {
     public void characters(char[] ch, int start, int length) {
         switch (currentElement) {
             case "id":
-                
+                current.setId(new Integer(new String(ch, start, length)));
+                break;
+            case "name":
+                current.setParameter(currentElement, new String(ch, start, length));
+                break;
+            case "price":
+                current.setParameter(currentElement, new Double(new String(ch, start, length)));
+                break;
+            case "count":
+                current.setParameter(currentElement, new Short(new String(ch,start,length)));
+                break;
+            default:
         }
     }
 
     @Override
     public void endElement(String namespaceURI, String localName, String qName) throws SAXException {
+        currentElement = "";
         switch (qName) {
-            case "id":
+            case "position":
+            case "order":
+            case "customer":
+                current = current.getParent();
+                parent = current.getParent();
                 break;
-            case "name":
-                break;
-            case "price":
-                break;
-            case "count":
-                break;
+            case "customers":
+                System.out.print("Seems like we are out");
         }
     }
 
@@ -101,5 +113,9 @@ public class MyXMLParserImpl1 extends DefaultHandler implements MyXMLParser {
     public CustomerList parse(InputStream xml, InputStream xsd) {
 
         return null;
+    }
+
+    public MyNode getTop() {
+        return top;
     }
 }

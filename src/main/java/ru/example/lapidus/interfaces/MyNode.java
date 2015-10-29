@@ -6,4 +6,6 @@ package ru.example.lapidus.interfaces;
 public interface MyNode {
     public MyNode addChild();
     public MyNode getParent();
+    public void setId(int id);
+    public void setParameter(String name, Object value);
 }

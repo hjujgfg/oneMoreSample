@@ -29,6 +29,19 @@ public class Position implements MyNode{
         this.id = id;
     }
 
+    @Override
+    public void setParameter(String name, Object value) {
+        switch (name) {
+            case "price":
+                this.price = (Double)value;
+                break;
+            case "count":
+                this.count = (Short)value;
+                break;
+            default:
+        }
+    }
+
     public double getPrice() {
         return price;
     }
