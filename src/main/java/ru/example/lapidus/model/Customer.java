@@ -8,12 +8,10 @@ import java.util.List;
 /**
  * Created by Егор on 28.10.2015.
  */
-public class Customer implements MyNode{
-    private int id;
+public class Customer extends MyNode{
     private String name;
     private List<Order> orders;
     private int currentOrder;
-    private CustomerList parent;
     public Customer(MyNode parent) {
         orders = new ArrayList<Order>();
         this.parent = (CustomerList) parent;
@@ -26,20 +24,8 @@ public class Customer implements MyNode{
         return o;
     }
 
-    public CustomerList getParent() {
-        return parent;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @Override
-    public void setParameter(String name, Object value) {
+    public void setProperty(String name, String value) {
         if (name == "name") {
             this.name = (String)value;
         }

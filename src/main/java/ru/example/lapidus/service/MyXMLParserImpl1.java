@@ -6,8 +6,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import ru.example.lapidus.interfaces.MyNode;
 import ru.example.lapidus.interfaces.MyXMLParser;
-import ru.example.lapidus.model.Customer;
-import ru.example.lapidus.model.CustomerList;
+import ru.example.lapidus.utils.MyNodeFactory;
 
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
@@ -25,12 +24,14 @@ public class MyXMLParserImpl1 extends DefaultHandler implements MyXMLParser {
     private String currentElement;
     private MyNode current;
     private MyNode parent;
-    private CustomerList top;
+    //actually after parsing completes top should be equal to current
+    private MyNode top;
     /**
-     * One extra run over xml, however helps to decouple
-     * @param xml
-     * @param xsd
-     * @return
+     * Validates XML against schema
+     * One extra run over xml, however we will not try to parse in case it is not valid
+     * @param xml InputStream to validate
+     * @param xsd InputStream of schema
+     * @return true if valid, false - otherwise
      */
     @Override
     public boolean isValid(InputStream xml, InputStream xsd) {
@@ -59,7 +60,7 @@ public class MyXMLParserImpl1 extends DefaultHandler implements MyXMLParser {
         currentElement = qName;
         switch (qName){
             case "customers":
-                top = new CustomerList();
+                top = MyNodeFactory.buildNode(qName);
                 current = top;
                 break;
             case "customer":
@@ -79,18 +80,11 @@ public class MyXMLParserImpl1 extends DefaultHandler implements MyXMLParser {
     public void characters(char[] ch, int start, int length) {
         switch (currentElement) {
             case "id":
-                current.setId(new Integer(new String(ch, start, length)));
-                break;
             case "name":
-                current.setParameter(currentElement, new String(ch, start, length));
-                break;
             case "price":
-                current.setParameter(currentElement, new Double(new String(ch, start, length)));
-                break;
             case "count":
-                current.setParameter(currentElement, new Short(new String(ch,start,length)));
+                current.setProperty(currentElement, new String(ch, start, length));
                 break;
-            default:
         }
     }
 
@@ -107,12 +101,6 @@ public class MyXMLParserImpl1 extends DefaultHandler implements MyXMLParser {
             case "customers":
                 System.out.print("Seems like we are out");
         }
-    }
-
-    @Override
-    public CustomerList parse(InputStream xml, InputStream xsd) {
-
-        return null;
     }
 
     public MyNode getTop() {

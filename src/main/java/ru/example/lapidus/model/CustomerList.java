@@ -8,10 +8,9 @@ import java.util.List;
 /**
  * Created by Егор on 27.10.2015.
  */
-public class CustomerList implements MyNode {
+public class CustomerList extends MyNode {
     private List<Customer> customers;
     int current;
-    int id;
     public CustomerList() {
         customers = new ArrayList<Customer>();
     }
@@ -28,18 +27,9 @@ public class CustomerList implements MyNode {
     }
 
     @Override
-    public MyNode getParent() {
-        return null;
+    public void setProperty(String name, String value) {
+        if (name == "id"){
+            id = Integer.parseInt(value);
+        }
     }
-
-    @Override
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Override
-    public void setParameter(String name, Object value) {
-
-    }
-
 }

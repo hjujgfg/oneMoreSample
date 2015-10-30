@@ -1,33 +1,34 @@
 <customers>
+	<customer></customer>
 	<customer>
 		<id>233658</id>
 		<name>Игорь Владимирович</name>
 		<orders>
 			<order>
-				<id>233658</id>
+				<id>333333</id>
 				<positions>
 					<position>
-						<id>233658</id>
-						<price>30.0</price>
-						<count>5</count>
+						<id>222222</id>
+						<price>31234.0</price>
+						<count>10</count>
 					</position>
 					<position>
-						<id>233658</id>
-						<price>30.0</price>
-						<count>5</count>
+						<id>444444</id>
+						<price>100.0</price>
+						<count>1</count>
 					</position>
 				</positions>
 			</order>
 			<order>
-				<id>233658</id>
+				<id>6789</id>
 				<positions>
 					<position>
-						<id>233658</id>
-						<price>30.0</price>
-						<count>5</count>
+						<id>777777</id>
+						<price>98.0</price>
+						<count>102</count>
 					</position>
 					<position>
-						<id>233658</id>
+						<id>888888</id>
 						<price>30.0</price>
 						<count>5</count>
 					</position>
@@ -40,32 +41,32 @@
 		<name>Игорь Владимирович</name>
 		<orders>
 			<order>
-				<id>233658</id>
+				<id>12121212</id>
 				<positions>
 					<position>
-						<id>233658</id>
-						<price>30.0</price>
-						<count>5</count>
+						<id>131313</id>
+						<price>232.0</price>
+						<count>52</count>
 					</position>
 					<position>
-						<id>233658</id>
+						<id>14141414</id>
 						<price>30.0</price>
 						<count>5</count>
 					</position>
 				</positions>
 			</order>
 			<order>
-				<id>233658</id>
+				<id>151515</id>
 				<positions>
 					<position>
-						<id>233658</id>
-						<price>30.0</price>
-						<count>5</count>
+						<id>116161616</id>
+						<price>23.0</price>
+						<count>445</count>
 					</position>
 					<position>
-						<id>233658</id>
-						<price>30.0</price>
-						<count>5</count>
+						<id>1717171</id>
+						<price>9988.0</price>
+						<count>2</count>
 					</position>
 				</positions>
 			</order>

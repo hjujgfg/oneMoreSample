@@ -5,38 +5,26 @@ import ru.example.lapidus.interfaces.MyNode;
 /**
  * Created by Егор on 28.10.2015.
  */
-public class Position implements MyNode{
-    private int id;
+public class Position extends MyNode{
     private double price;
     private short count;
-    private Order parent;
 
-    public Position(MyNode parent) throws ClassCastException {
-        this.parent = (Order) parent;
+    public Position(MyNode parent){
+        this.parent = parent;
     }
 
     public MyNode addChild(){
         return null;
     }
-    public MyNode getParent() {
-        return parent;
-    }
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Override
-    public void setParameter(String name, Object value) {
+    public void setProperty(String name, String value) {
         switch (name) {
             case "price":
-                this.price = (Double)value;
+                this.price = Double.parseDouble(value);
                 break;
             case "count":
-                this.count = (Short)value;
+                this.count = Short.parseShort(value);
                 break;
             default:
         }

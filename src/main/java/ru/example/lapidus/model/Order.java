@@ -1,5 +1,6 @@
 package ru.example.lapidus.model;
 
+import jdk.jfr.events.ExceptionThrownEvent;
 import ru.example.lapidus.interfaces.MyNode;
 
 import java.util.ArrayList;
@@ -8,14 +9,12 @@ import java.util.List;
 /**
  * Created by Егор on 28.10.2015.
  */
-public class Order implements MyNode{
-    private int id;
+public class Order extends MyNode{
     private List<Position> positions;
     int currentPosition;
-    private Customer parent;
     public Order(MyNode parent) throws ClassCastException{
         positions = new ArrayList<Position>();
-        this.parent = (Customer) parent;
+        this.parent = parent;
     }
 
     public  Position addChild() {
@@ -23,23 +22,5 @@ public class Order implements MyNode{
         positions.add(p);
         currentPosition = positions.size() - 1;
         return p;
-    }
-
-    @Override
-    public MyNode getParent() {
-        return parent;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Override
-    public void setParameter(String name, Object value) {
-
     }
 }

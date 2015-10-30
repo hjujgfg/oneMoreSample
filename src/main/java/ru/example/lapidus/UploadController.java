@@ -49,6 +49,9 @@ public class UploadController {
                 //InputStream xsd = UploadController.class.getResourceAsStream("scheme.xsd");
                 Resource resXsd = resourceLoader.getResource("classpath:scheme.xsd");
                 InputStream xsd = resXsd.getInputStream();
+                if (!parser.isValid(xml, xsd)){
+                    return "You sick bastard uploaded not valid file!";
+                }
                 //InputStream xsd = new FileInputStream(new File("scheme.xsd"));
                 //this.getClass().getResourceAsStream("scheme.xds");
                 //MyXMLParser parser = new MyXMLParserImpl1();
@@ -58,7 +61,7 @@ public class UploadController {
                 //MyXMLParserImpl1 mp = new MyXMLParserImpl1();
                 saxParser.parse(xml, (DefaultHandler) parser);
                 CustomerList top = (CustomerList) parser.getTop();
-                return "You successfully uploaded " + name + "!" + parser.isValid(xml, xsd);
+                return "You successfully uploaded " + name + "!";
             } catch (Exception e) {
                 return "You failed to upload " + name + " => " + e.getMessage();
             }
