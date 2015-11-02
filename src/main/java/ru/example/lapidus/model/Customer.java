@@ -11,7 +11,6 @@ import java.util.List;
 public class Customer extends MyNode{
     private String name;
     private List<Order> orders;
-    private int currentOrder;
     public Customer(MyNode parent) {
         orders = new ArrayList<Order>();
         this.parent = (CustomerList) parent;
@@ -20,7 +19,6 @@ public class Customer extends MyNode{
     public Order addChild() {
         Order o = new Order(this);
         orders.add(o);
-        currentOrder = orders.size() - 1;
         return o;
     }
 
@@ -37,5 +35,39 @@ public class Customer extends MyNode{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getMaxOrder() {
+        double max = -1;
+        for (Order o : orders) {
+            double tmp = o.getTotal();
+            if (tmp > max)
+                max = tmp;
+        }
+        return max;
+    }
+
+    public double getMinOrder() {
+        if (orders.isEmpty())
+            return -1;
+        double min = Double.MAX_VALUE;
+        for (Order o : orders) {
+            double tmp = o.getTotal();
+            if (tmp < min)
+                min = tmp;
+        }
+        return min;
+    }
+
+    public double getTotal() {
+        double res = 0;
+        for (Order o : orders) {
+            res += o.getTotal();
+        }
+        return res;
+    }
+
+    public int getOrderNum(){
+        return orders.size();
     }
 }

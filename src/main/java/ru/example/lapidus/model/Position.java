@@ -45,4 +45,8 @@ public class Position extends MyNode{
     public void setCount(short count) {
         this.count = count;
     }
+
+    public double getTotalCost() {
+        return price * count;
+    }
 }

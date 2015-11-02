@@ -1,5 +1,4 @@
 <customers>
-	<customer></customer>
 	<customer>
 		<id>233658</id>
 		<name>Игорь Владимирович</name>
@@ -61,7 +60,7 @@
 					<position>
 						<id>116161616</id>
 						<price>23.0</price>
-						<count>445</count>
+						<count>123</count>
 					</position>
 					<position>
 						<id>1717171</id>

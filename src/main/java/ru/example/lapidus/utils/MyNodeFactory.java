@@ -2,6 +2,7 @@ package ru.example.lapidus.utils;
 
 import ru.example.lapidus.interfaces.MyNode;
 import ru.example.lapidus.model.CustomerList;
+import ru.example.lapidus.model.Order;
 
 /**
  * Created by Егор on 30.10.2015.

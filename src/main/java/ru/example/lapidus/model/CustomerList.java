@@ -1,6 +1,7 @@
 package ru.example.lapidus.model;
 
 import ru.example.lapidus.interfaces.MyNode;
+import sun.security.pkcs11.P11Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,5 +32,67 @@ public class CustomerList extends MyNode {
         if (name == "id"){
             id = Integer.parseInt(value);
         }
+    }
+
+    public double getTotal() {
+        double res = 0;
+        for (Customer c : customers) {
+            res += c.getTotal();
+        }
+        return res;
+    }
+
+    public double getMinOrder() {
+        if (customers.isEmpty())
+            return -1;
+        double min = Double.MAX_VALUE;
+        for (Customer c : customers) {
+            double tmp = c.getMinOrder();
+            if (tmp < min)
+                min = tmp;
+        }
+        return min;
+    }
+
+    public double getMaxOrder() {
+        double max = -1;
+        for (Customer c : customers) {
+            double tmp = c.getMaxOrder();
+            if (tmp > max)
+                max = tmp;
+        }
+        return max;
+    }
+
+    public String getMaxClient() {
+        Customer t = null;
+        double max = 0;
+        for (Customer c : customers) {
+            double tmp = c.getTotal();
+            if (tmp > max) {
+                max = tmp;
+                t = c;
+            }
+        }
+        if (t != null) {
+            return t.getId() + ":" + t.getName();
+        } else {
+            return "no customers";
+        }
+    }
+
+    public int getOrderNum() {
+        int res = 0;
+        for (Customer c : customers) {
+            res += c.getOrderNum();
+        }
+        return res;
+    }
+
+    public double getAvgPrice() {
+        double num = getOrderNum();
+        if (num == 0)
+            return -1;
+        return getTotal() / num;
     }
 }
