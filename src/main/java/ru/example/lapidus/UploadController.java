@@ -37,7 +37,7 @@ public class UploadController {
         return "parseres";
     }*/
 
-    @RequestMapping(value="/upload")
+    @RequestMapping(value="/upload", method = RequestMethod.POST)
     //@ResponseBody
     public ModelAndView handleFileUpload(@RequestParam("name") String name,
                                                  @RequestParam("file") MultipartFile file,

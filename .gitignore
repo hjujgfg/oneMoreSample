@@ -10,6 +10,7 @@ $RECYCLE.BIN/
 
 out/
 target/
+tmp/
 .idea/
 
 # Windows Installer files
