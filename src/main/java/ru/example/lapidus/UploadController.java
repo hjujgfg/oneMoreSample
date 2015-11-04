@@ -60,7 +60,7 @@ public class UploadController {
                 SAXParserFactory factory = SAXParserFactory.newInstance();
                 SAXParser saxParser = factory.newSAXParser();
                 saxParser.parse(xml, (DefaultHandler) parser);
-                
+
                 CustomerList top = (CustomerList) parser.getTop();
                 Map<String, String> response = new HashMap<>();
                 response.put("total", top.getTotal()+"");
