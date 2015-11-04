@@ -16,4 +16,5 @@ public class SampleProjectApplication extends SpringBootServletInitializer{
     public static void main(String[] args) {
         SpringApplication.run(SampleProjectApplication.class, args);
     }
+
 }

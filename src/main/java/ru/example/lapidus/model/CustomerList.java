@@ -75,7 +75,7 @@ public class CustomerList extends MyNode {
             }
         }
         if (t != null) {
-            return t.getId() + ":" + t.getName();
+            return t.getName();
         } else {
             return "no customers";
         }
@@ -94,5 +94,14 @@ public class CustomerList extends MyNode {
         if (num == 0)
             return -1;
         return getTotal() / num;
+    }
+
+    public String getFilteredCustomers(double n) {
+        StringBuilder sb = new StringBuilder();
+        for (Customer c : customers) {
+            if (c.getTotal() > n)
+                sb.append(c.getName() + "; ");
+        }
+        return sb.toString();
     }
 }
