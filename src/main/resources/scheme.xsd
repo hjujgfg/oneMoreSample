@@ -2,7 +2,7 @@
     <xsd:element name="customers">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="customer" maxOccurs="unbounded" minOccurs="0">
+                <xsd:element name="customer" maxOccurs="unbounded" minOccurs="1">
                     <xsd:complexType>
                         <xsd:sequence>
                             <xsd:element type="xsd:int" name="id"/>
@@ -10,14 +10,14 @@
                             <xsd:element name="orders">
                                 <xsd:complexType>
                                     <xsd:sequence>
-                                        <xsd:element name="order" maxOccurs="unbounded" minOccurs="0">
+                                        <xsd:element name="order" maxOccurs="unbounded" minOccurs="1">
                                             <xsd:complexType>
                                                 <xsd:sequence>
                                                     <xsd:element type="xsd:int" name="id"/>
                                                     <xsd:element name="positions">
                                                         <xsd:complexType>
                                                             <xsd:sequence>
-                                                                <xsd:element name="position" maxOccurs="unbounded" minOccurs="0">
+                                                                <xsd:element name="position" maxOccurs="unbounded" minOccurs="1">
                                                                     <xsd:complexType>
                                                                         <xsd:sequence>
                                                                             <xsd:element type="xsd:int" name="id"/>

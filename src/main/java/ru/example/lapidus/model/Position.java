@@ -3,6 +3,7 @@ package ru.example.lapidus.model;
 import ru.example.lapidus.interfaces.MyNode;
 
 /**
+ * Represents Position node
  * Created by Егор on 02.11.2015.
  */
 public class Position extends MyNode{

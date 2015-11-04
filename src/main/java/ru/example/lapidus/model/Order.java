@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Represents Order node
  * Created by Егор on 02.11.2015.
  */
 public class Order extends MyNode{

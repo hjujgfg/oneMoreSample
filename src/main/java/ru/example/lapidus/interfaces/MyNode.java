@@ -1,6 +1,7 @@
 package ru.example.lapidus.interfaces;
 
 /**
+ * General node abstract class
  * Created by Егор on 02.11.2015.
  */
 public abstract class MyNode {
@@ -8,6 +9,11 @@ public abstract class MyNode {
     protected MyNode parent;
 
 
+    /**
+     * Method overridden in children to set their properties
+     * @param propertyName
+     * @param value
+     */
     public void setProperty(String propertyName, String value) {
         id = Integer.parseInt(value);
     }
@@ -18,7 +24,7 @@ public abstract class MyNode {
 
     /**
      * just for convenience
-     * @return
+     * @return id
      */
     public final int getId(){
         return id;
@@ -28,6 +34,10 @@ public abstract class MyNode {
         this.id = id;
     }
 
+    /**
+     * Encapsulates creation of child nodes
+     * @return
+     */
     public abstract MyNode addChild();
 
     public MyNode getParent(){

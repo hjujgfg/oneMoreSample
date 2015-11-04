@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ru.example.lapidus</groupId>
-	<artifactId>sampleProject</artifactId>
+	<artifactId>XMLParser</artifactId>
 	<version>0.1.0</version>
 
 	<parent>

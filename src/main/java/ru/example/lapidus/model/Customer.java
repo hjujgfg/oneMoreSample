@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Represents Customer node
  * Created by Егор on 02.11.2015.
  */
 public class Customer extends MyNode{

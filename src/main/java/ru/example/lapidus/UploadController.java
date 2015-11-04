@@ -39,13 +39,13 @@ public class UploadController {
                                                  @RequestParam(value = "threshold", defaultValue = "0") int threshold, ModelAndView model){
         if (!file.isEmpty()) {
             try {
+                File tmp = new File("tmp");
+                tmp.mkdir();
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream =
                         new BufferedOutputStream(new FileOutputStream(new File("tmp/"+name)));
                 stream.write(bytes);
                 stream.close();
-                File tmp = new File("tmp");
-                tmp.mkdir();
                 InputStream xml = new FileInputStream(new File("tmp/"+name));
                 Resource resXsd = resourceLoader.getResource("classpath:scheme.xsd");
                 InputStream xsd = resXsd.getInputStream();
@@ -69,13 +69,15 @@ public class UploadController {
                 if (threshold != 0) {
                     response.put("filtered", top.getFilteredCustomers((double) threshold));
                 }
-                //this is mock for implementing actual view
+                //this is mock for implementing an actual view
                 model.addAllObjects(response);
                 model.setViewName("result");
                 return buildResult(response);
             } catch (Exception e) {
+                File f = new File("tmp");
+                f.delete();
                 e.printStackTrace();
-                return "Произошла ошибочка";
+                return "Произошла ошибка...";
             }
         } else {
             return "Файл пустой!";

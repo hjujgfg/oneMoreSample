@@ -1,7 +1,7 @@
 <customers>
 	<customer>
 		<id>233658</id>
-		<name>Игорь Владимирович</name>
+		<name>Игорь Владимирович1</name>
 		<orders>
 			<order>
 				<id>333333</id>
@@ -37,7 +37,7 @@
 	</customer>
 	<customer>
 		<id>233658</id>
-		<name>Игорь Владимирович</name>
+		<name>Игорь Владимирович2</name>
 		<orders>
 			<order>
 				<id>12121212</id>

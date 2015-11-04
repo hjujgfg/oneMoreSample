@@ -5,7 +5,7 @@ import ru.example.lapidus.model.CustomerList;
 import ru.example.lapidus.model.Order;
 
 /**
- * Created by Егор on 30.10.2015.
+ * Created by Егор on 02.11.2015.
  * We want to decouple implementation and interface
  */
 public class MyNodeFactory {
