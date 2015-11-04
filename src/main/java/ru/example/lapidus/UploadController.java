@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.xml.sax.helpers.DefaultHandler;
-import ru.example.lapidus.interfaces.MyNode;
 import ru.example.lapidus.interfaces.MyXMLParser;
 import ru.example.lapidus.model.CustomerList;
-import ru.example.lapidus.service.MyXMLParserImpl1;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -34,44 +32,36 @@ public class UploadController {
     @Autowired
     private MyXMLParser parser;
 
-    @RequestMapping(value = "/upload", method = RequestMethod.GET, produces = "text/plain")
-    @ResponseBody
+    /*@RequestMapping(value = "/upload", method = RequestMethod.GET)
     public String upload() {
-        return "shit";
-    }
+        return "parseres";
+    }*/
 
-    @RequestMapping(value="/upload", method=RequestMethod.POST)
-    @ResponseBody
-    public Map<String, String> handleFileUpload(@RequestParam("name") String name,
+    @RequestMapping(value="/upload")
+    //@ResponseBody
+    public ModelAndView handleFileUpload(@RequestParam("name") String name,
                                                  @RequestParam("file") MultipartFile file,
-                                                 @RequestParam("threshold") int threshold){
+                                                 @RequestParam("threshold") int threshold, ModelAndView model){
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream =
-                        new BufferedOutputStream(new FileOutputStream(new File(name)));
+                        new BufferedOutputStream(new FileOutputStream(new File("tmp/"+name)));
                 stream.write(bytes);
                 stream.close();
-                InputStream xml = new FileInputStream(new File(name));
-                //InputStream xsd = UploadController.class.getResourceAsStream("scheme.xsd");
+                InputStream xml = new FileInputStream(new File("tmp/"+name));
                 Resource resXsd = resourceLoader.getResource("classpath:scheme.xsd");
                 InputStream xsd = resXsd.getInputStream();
                 if (!parser.isValid(xml, xsd)){
-                    //return "You sick bastard uploaded not valid file!";
                     return null;
                 }
-                //we have to recreate stream as validation closes it
-                xml = new FileInputStream(new File(name));
-                //InputStream xsd = new FileInputStream(new File("scheme.xsd"));
-                //this.getClass().getResourceAsStream("scheme.xds");
-                //MyXMLParser parser = new MyXMLParserImpl1();
+                xml = new FileInputStream(new File("tmp/"+name));
 
                 SAXParserFactory factory = SAXParserFactory.newInstance();
                 SAXParser saxParser = factory.newSAXParser();
-                //MyXMLParserImpl1 mp = new MyXMLParserImpl1();
                 saxParser.parse(xml, (DefaultHandler) parser);
+                
                 CustomerList top = (CustomerList) parser.getTop();
-                //return "You successfully uploaded " + name + "!";
                 Map<String, String> response = new HashMap<>();
                 response.put("total", top.getTotal()+"");
                 response.put("max_client", top.getMaxClient());
@@ -80,8 +70,17 @@ public class UploadController {
                 response.put("order_num", top.getOrderNum() + "");
                 response.put("avg_cost", top.getAvgPrice() + "");
                 //return new ModelAndView("response", response);
-                return response;
+                //return response;
+                //ModelAndView mav = new ModelAndView("jsp/upload");
+                //mav.addAllObjects(response);
+                //model.addAllAttributes(response);
+                model.setViewName("parseres");
+                model.addAllObjects(response);
+                return model;
+                //return "parseres";
+                //return mav;
             } catch (Exception e) {
+                e.printStackTrace();
                 //return "You failed to upload " + name + " => " + e.getMessage();
                 return null;
             }
