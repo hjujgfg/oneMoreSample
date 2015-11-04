@@ -3,7 +3,7 @@ package ru.example.lapidus.model;
 import ru.example.lapidus.interfaces.MyNode;
 
 /**
- * Created by Егор on 28.10.2015.
+ * Created by Егор on 02.11.2015.
  */
 public class Position extends MyNode{
     private double price;

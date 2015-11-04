@@ -1,7 +1,7 @@
 package ru.example.lapidus.interfaces;
 
 /**
- * Created by Егор on 30.10.2015.
+ * Created by Егор on 02.11.2015.
  */
 public abstract class MyNode {
     protected int id;

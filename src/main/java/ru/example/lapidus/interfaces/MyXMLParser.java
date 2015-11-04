@@ -5,7 +5,7 @@ import ru.example.lapidus.model.CustomerList;
 import java.io.InputStream;
 
 /**
- * Created by Егор on 27.10.2015.
+ * Created by Егор on 02.11.2015.
  */
 public interface MyXMLParser {
 

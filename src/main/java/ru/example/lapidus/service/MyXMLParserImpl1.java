@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by Егор on 27.10.2015.
+ * Created by Егор on 02.11.2015.
  */
 @Component
 public class MyXMLParserImpl1 extends DefaultHandler implements MyXMLParser {

@@ -11,23 +11,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
-import org.springframework.web.servlet.view.InternalResourceView;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.xml.sax.helpers.DefaultHandler;
 import ru.example.lapidus.interfaces.MyXMLParser;
 import ru.example.lapidus.model.CustomerList;
 
-import javax.management.modelmbean.ModelMBean;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Created by Егор on 20.10.2015.
+ * Created by Егор on 02.11.2015.
  */
 @Controller
 public class UploadController {
